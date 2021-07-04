@@ -1,0 +1,15 @@
+以下命令生成私钥：
+私钥放于授权服务器
+keytool -genkeypair -alias myappname -keyalg RSA -keypass myappname -keystore myappname.jks -storepass myappname -validity 365
+-alias 要处理的条目的别名
+-keyalg 密钥算法
+-keypass 密钥口令
+-keystore 密钥库名称
+-validity 有效天数
+-storepass 密钥库口令
+
+以下命令生成公钥：
+公钥放于资源服务器
+keytool -list -rfc --keystore myappname.jks | openssl x509 -inform pem -pubkey
+输入密钥库口令
+将解析出来的公钥复制到文件myappname.txt里面

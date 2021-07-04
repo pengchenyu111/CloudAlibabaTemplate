@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="generateService" value="true" />
+        <option name="generateServiceInterface" value="true" />
+        <option name="javaMapperPackage" value="com.pcy.mapper" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
+        <option name="javaModelPackage" value="com.pcy.domain" />
+        <option name="javaModelPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="general-user-server-service" />
+        <option name="lombokAllArgConstructor" value="true" />
+        <option name="lombokDataAnnotation" value="true" />
+        <option name="lombokNoArgsConstructor" value="true" />
+        <option name="mapperAnnotaion" value="true" />
+        <option name="modelAddEqualHashCode" value="true" />
+        <option name="modelAddToString" value="true" />
+        <option name="moduleNameToPackageAndPathMap">
+          <map>
+            <entry key="general-user-server-service">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.pcy.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
+                  <option name="javaModelPacakge" value="com.pcy.domain" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.pcy.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
+                  <option name="javaServicePackage" value="com.pcy.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
+                  <option name="xmlPackage" value="mappers" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="movie-server-service">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.pcy.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/template-movie-server/movie-server-service/src/main/java" />
+                  <option name="javaModelPacakge" value="com.pcy.domain" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/template-movie-server/movie-server-service/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.pcy.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/template-movie-server/movie-server-service/src/main/java" />
+                  <option name="javaServicePackage" value="com.pcy.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/template-movie-server/movie-server-service/src/main/java" />
+                  <option name="xmlPackage" value="mappers" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/template-movie-server/movie-server-service/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+            <entry key="template-authorization-server">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.pcy.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/template-authorization-server/src/main/java" />
+                  <option name="javaModelPacakge" value="com.pcy.domain" />
+                  <option name="javaModelPath" value="$PROJECT_DIR$/template-authorization-server/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.pcy.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/template-authorization-server/src/main/java" />
+                  <option name="javaServicePackage" value="com.pcy.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/template-authorization-server/src/main/java" />
+                  <option name="xmlPackage" value="mappers" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/template-authorization-server/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="p3CComment" value="true" />
+        <option name="tableGenerateConfigs">
+          <map>
+            <entry key="movie_recommendation:movie_detail">
+              <value>
+                <TableGenerateConfig>
+                  <option name="javaModelName" value="MovieDetail" />
+                  <option name="moduleName" value="movie-server-service" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="movie_recommendation:movie_user">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="user_id" />
+                  <option name="javaModelName" value="MovieUser" />
+                  <option name="moduleName" value="general-user-server-service" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="movie_recommendation:sys_user">
+              <value>
+                <TableGenerateConfig>
+                  <option name="generatedKey" value="id" />
+                  <option name="javaModelName" value="SysUser" />
+                  <option name="moduleName" value="template-authorization-server" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+          </map>
+        </option>
+        <option name="useSwagger" value="true" />
+        <option name="userMybatisPlus" value="true" />
+        <option name="xmlMapperPackage" value="mappers" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/resources" />
+      </ProjectProfile>
+    </option>
+  </component>
+</project>

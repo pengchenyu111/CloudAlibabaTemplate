@@ -1,0 +1,54 @@
+server:
+  port: 80
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    nacos:
+      server-addr: 192.168.126.13:8848
+      discovery:
+        namespace: 0d70f7cc-3925-4f2a-a212-bd7053c89864
+        group: DEFAULT_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: movie-server-service_router
+          uri: lb://movie-server-service
+          predicates:
+            - Path=/movie_detail/**
+        - id: general-user-server-service_router
+          uri: lb://general-user-server-service
+          predicates:
+            - Path=/user/**
+
+    # Sentinel 限流与降级
+    sentinel:
+      transport:
+        dashboard: 192.168.126.13:8858
+      datasource:
+        # 用Nacos做规则持久化
+        ds1-flow.nacos:
+          serverAddr: 192.168.126.13:8848
+          namespace: 0d70f7cc-3925-4f2a-a212-bd7053c89864
+          groupId: DEFAULT_GROUP
+          dataId: gw-flow.json
+          ruleType: gw-flow
+        ds2-api-group.nacos:
+          serverAddr: 192.168.126.13:8848
+          namespace: 0d70f7cc-3925-4f2a-a212-bd7053c89864
+          groupId: DEFAULT_GROUP
+          dataId: api-group.json
+          ruleType: gw-api-group
+        ds3-degrade.nacos:
+          serverAddr: 192.168.126.13:8848
+          namespace: 0d70f7cc-3925-4f2a-a212-bd7053c89864
+          groupId: DEFAULT_GROUP
+          dataId: gw-degrade.json
+          ruleType: degrade
+  redis:
+    host: 192.168.126.13
+    port: 6379
+    password: Pcy90321.

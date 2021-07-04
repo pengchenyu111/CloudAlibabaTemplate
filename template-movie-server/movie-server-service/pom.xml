@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>template-movie-server</artifactId>
+        <groupId>com.pcy</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>movie-server-service</artifactId>
+
+    <dependencies>
+        <!-- 项目公共包 -->
+        <dependency>
+            <groupId>com.pcy</groupId>
+            <artifactId>template-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- 子模块api包 -->
+        <dependency>
+            <groupId>com.pcy</groupId>
+            <artifactId>movie-server-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

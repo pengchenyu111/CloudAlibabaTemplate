@@ -31,5 +31,12 @@ public class ErrorCodeMsg {
     public static final int QUERY_NULL_CODE = 10001;
     public static final String QUERY_NULL_MESSAGE = "查询结果为空";
 
+    /**
+     * 更新
+     */
+    public static final int UPDATE_SUCCESS_CODE = 20000;
+    public static final String UPDATE_SUCCESS_MESSAGE = "修改成功";
+    public static final int UPDATE_FAILED_CODE = 20001;
+    public static final String UPDATE_FAILED_MESSAGE = "修改失败";
 
 }

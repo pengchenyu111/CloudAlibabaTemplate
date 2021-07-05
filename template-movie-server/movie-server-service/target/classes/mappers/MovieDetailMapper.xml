@@ -57,4 +57,10 @@
         imdb_url,
         img_list
     </sql>
+
+    <update id="updateTitleById">
+    update movie_detail
+    set title = #{newTitle}
+    where douban_id = #{id}
+</update>
 </mapper>

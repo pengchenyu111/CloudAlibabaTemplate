@@ -9,10 +9,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author PengChenyu
@@ -38,5 +37,19 @@ public class MovieDetailController {
         }
         return ResponseObject.success(ErrorCodeMsg.QUERY_SUCCESS_CODE, ErrorCodeMsg.QUERY_SUCCESS_MESSAGE, movieDetail);
 
+    }
+
+    @ApiOperation(value = "根据电影id修改电影标题")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "电影id"),
+            @ApiImplicitParam(name = "newTitle", value = "电影新标题"),
+    })
+    @PutMapping("/title/{id}")
+    public ResponseObject<MovieDetail> updateTitleById(@PathVariable("id") Integer id, @RequestBody Map<String, String> map) {
+        MovieDetail movieDetail = movieDetailService.updateTitleById(id, map.get("newTitle"));
+        if (movieDetail == null) {
+            return ResponseObject.failed(ErrorCodeMsg.UPDATE_FAILED_CODE, ErrorCodeMsg.UPDATE_FAILED_MESSAGE, null);
+        }
+        return ResponseObject.success(ErrorCodeMsg.UPDATE_SUCCESS_CODE, ErrorCodeMsg.UPDATE_SUCCESS_MESSAGE, movieDetail);
     }
 }

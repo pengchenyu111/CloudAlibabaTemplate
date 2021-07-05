@@ -14,6 +14,3 @@ spring:
         namespace: 0d70f7cc-3925-4f2a-a212-bd7053c89864
         group: DEFAULT_GROUP
         file-extension: yaml
-
-
-

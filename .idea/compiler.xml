@@ -13,6 +13,7 @@
         <module name="general-user-server-service" />
         <module name="template-authorization-server" />
         <module name="general-user-server-api" />
+        <module name="template-sms-mail-server" />
         <module name="movie-server-service" />
       </profile>
     </annotationProcessing>
@@ -28,6 +29,7 @@
       <module name="template-gateway-server" options="-parameters" />
       <module name="template-general-user-server" options="-parameters" />
       <module name="template-movie-server" options="-parameters" />
+      <module name="template-sms-mail-server" options="-parameters" />
     </option>
   </component>
 </project>

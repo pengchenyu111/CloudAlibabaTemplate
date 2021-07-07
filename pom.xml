@@ -15,6 +15,7 @@
         <module>template-gateway-server</module>
         <module>template-movie-server</module>
         <module>template-general-user-server</module>
+        <module>template-sms-mail-server</module>
     </modules>
 
     <parent>

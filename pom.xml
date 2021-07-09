@@ -36,6 +36,7 @@
         <aliyun-sdk-oss.version>3.9.1</aliyun-sdk-oss.version>
         <aliyun-java-sdk-core.version>4.5.9</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-dm.version>3.3.1</aliyun-java-sdk-dm.version>
+        <aliyun-sms.version>2.0.4</aliyun-sms.version>
         <lombok.version>1.18.12</lombok.version>
         <swagger-annotations.version>1.5.20</swagger-annotations.version>
         <swagger2.version>2.9.2</swagger2.version>
@@ -109,6 +110,11 @@
                 <groupId>com.aliyun</groupId>
                 <artifactId>aliyun-java-sdk-dm</artifactId>
                 <version>${aliyun-java-sdk-dm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>dysmsapi20170525</artifactId>
+                <version>${aliyun-sms.version}</version>
             </dependency>
             <!-- 工具包-->
             <!-- lombok -->

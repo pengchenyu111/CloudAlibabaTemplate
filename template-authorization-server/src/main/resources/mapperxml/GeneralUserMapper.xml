@@ -28,7 +28,7 @@
     <select id="selectUsernameById" resultType="java.lang.String">
         select account
         from movie_user
-        where id = #{id}
+        where user_id = #{id}
     </select>
 
     <select id="selectGeneralUserByUsername" resultMap="BaseResultMap">

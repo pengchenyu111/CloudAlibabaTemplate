@@ -31,6 +31,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private static final String INSIDE_AUTH_SECRET = "appname-inside-secret";
     private static final int ACCESS_TOKEN_VALIDITY = 7 * 24 * 3600;
     private static final int REFRESH_TOKEN_VALIDITY = 30 * 24 * 3600;
+    private static final int INSIDE_TOKEN_VALIDITY = Integer.MAX_VALUE;
 
 
     @Autowired
@@ -65,7 +66,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret(passwordEncoder.encode(INSIDE_AUTH_SECRET))
                 .authorizedGrantTypes("client_credentials")
                 .scopes("all")
-                .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY)
+                .accessTokenValiditySeconds(INSIDE_TOKEN_VALIDITY)
         ;
         super.configure(clients);
     }

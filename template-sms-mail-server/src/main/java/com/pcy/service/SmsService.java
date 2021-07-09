@@ -4,6 +4,7 @@ import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.teaopenapi.models.Config;
+import com.pcy.constant.SmsConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +18,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class SmsService {
 
-    private static final String ACCESS_KEY_ID = "LTAI4FyYCdUJwMWU2toLXVmi";
-    private static final String ACCESS_KEY_SECRET = "MPQbtYUbHcTlxN1G07WbRvUBaxko7h";
-    private static final String ENDPOINT = "dysmsapi.aliyuncs.com";
-    private static final String SIGN_NAME = "智慧黄山";
-    private static final String TEMPLATE_CODE = "SMS_207520927";
-
-
     /**
      * 发送验证码短信到用户
      *
@@ -31,12 +25,12 @@ public class SmsService {
      * @return
      */
     public SendSmsResponse sendVerificationTo(String phoneNumber) throws Exception {
-        Client client = createClient(ACCESS_KEY_ID, ACCESS_KEY_SECRET);
+        Client client = createClient(SmsConstant.ACCESS_KEY_ID, SmsConstant.ACCESS_KEY_SECRET);
         String verificationCode = generateVerifyCode();
         SendSmsRequest sendSmsRequest = new SendSmsRequest()
                 .setPhoneNumbers(phoneNumber)
-                .setSignName(SIGN_NAME)
-                .setTemplateCode(TEMPLATE_CODE)
+                .setSignName(SmsConstant.SIGN_NAME)
+                .setTemplateCode(SmsConstant.TEMPLATE_CODE)
                 .setTemplateParam("{code:" + verificationCode + "}");
         SendSmsResponse sendSmsResponse = client.sendSms(sendSmsRequest);
         log.info("目标用户 => {}，验证码 => {}，信息发送状态 => {}", phoneNumber, verificationCode, sendSmsResponse.getBody().getCode());
@@ -56,7 +50,7 @@ public class SmsService {
                 .setAccessKeyId(accessKeyId)
                 .setAccessKeySecret(accessKeySecret);
         // 访问的域名
-        config.endpoint = ENDPOINT;
+        config.endpoint = SmsConstant.ENDPOINT;
         return new Client(config);
     }
 

@@ -9,11 +9,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="template-common" />
         <module name="template-gateway-server" />
+        <module name="sms-mail-server-service" />
         <module name="movie-server-api" />
         <module name="general-user-server-service" />
         <module name="template-authorization-server" />
+        <module name="sms-mail-server-api" />
         <module name="general-user-server-api" />
-        <module name="template-sms-mail-server" />
         <module name="movie-server-service" />
       </profile>
     </annotationProcessing>
@@ -24,6 +25,8 @@
       <module name="general-user-server-service" options="-parameters" />
       <module name="movie-server-api" options="-parameters" />
       <module name="movie-server-service" options="-parameters" />
+      <module name="sms-mail-server-api" options="-parameters" />
+      <module name="sms-mail-server-service" options="-parameters" />
       <module name="template-authorization-server" options="-parameters" />
       <module name="template-common" options="-parameters" />
       <module name="template-gateway-server" options="-parameters" />

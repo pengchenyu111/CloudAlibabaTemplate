@@ -2,12 +2,14 @@ package com.pcy.controller;
 
 import com.aliyuncs.dm.model.v20151123.SingleSendMailResponse;
 import com.pcy.constant.ErrorCodeMsg;
-import com.pcy.constant.MailCommonConstant;
 import com.pcy.model.ResponseObject;
 import com.pcy.model.mail.MailMessage;
 import com.pcy.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author PengChenyu

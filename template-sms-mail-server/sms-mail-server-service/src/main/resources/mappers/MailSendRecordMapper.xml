@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pcy.mapper.MailSendRecordMapper">
+    <resultMap id="BaseResultMap" type="com.pcy.domain.MailSendRecord">
+        <!--@mbg.generated-->
+        <!--@Table mail_send_record-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="account_name" jdbcType="VARCHAR" property="accountName"/>
+        <result column="to_address" jdbcType="VARCHAR" property="toAddress"/>
+        <result column="subject" jdbcType="VARCHAR" property="subject"/>
+        <result column="tag_name" jdbcType="VARCHAR" property="tagName"/>
+        <result column="mail_html_body" jdbcType="LONGVARCHAR" property="mailHtmlBody"/>
+        <result column="mail_text_body" jdbcType="LONGVARCHAR" property="mailTextBody"/>
+        <result column="send_time" jdbcType="TIMESTAMP" property="sendTime"/>
+        <result column="success_flag" jdbcType="CHAR" property="successFlag"/>
+        <result column="request_id" jdbcType="VARCHAR" property="requestId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+
+        <!--@mbg.generated-->
+        id, account_name, to_address, subject, tag_name, mail_html_body, mail_text_body,
+        send_time, success_flag, request_id
+    </sql>
+</mapper>

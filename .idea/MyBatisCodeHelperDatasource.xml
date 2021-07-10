@@ -6,10 +6,10 @@
         <option name="generateService" value="true" />
         <option name="generateServiceInterface" value="true" />
         <option name="javaMapperPackage" value="com.pcy.mapper" />
-        <option name="javaMapperPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
+        <option name="javaMapperPath" value="$PROJECT_DIR$/template-sms-mail-server/sms-mail-server-service/src/main/java" />
         <option name="javaModelPackage" value="com.pcy.domain" />
-        <option name="javaModelPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/java" />
-        <option name="lastDatabaseCrudChooseModuleName" value="general-user-server-service" />
+        <option name="javaModelPath" value="D:\MyOwnCodes\IJIDEAJAVA\cloud-alibaba-template\template-sms-mail-server/sms-mail-server-api/src/main/java" />
+        <option name="lastDatabaseCrudChooseModuleName" value="sms-mail-server-service" />
         <option name="lombokAllArgConstructor" value="true" />
         <option name="lombokDataAnnotation" value="true" />
         <option name="lombokNoArgsConstructor" value="true" />
@@ -50,6 +50,22 @@
                 </UserPackageAndPathInfoByModule>
               </value>
             </entry>
+            <entry key="sms-mail-server-service">
+              <value>
+                <UserPackageAndPathInfoByModule>
+                  <option name="javaMapperPackage" value="com.pcy.mapper" />
+                  <option name="javaMapperPath" value="$PROJECT_DIR$/template-sms-mail-server/sms-mail-server-service/src/main/java" />
+                  <option name="javaModelPacakge" value="com.pcy.domain" />
+                  <option name="javaModelPath" value="D:\MyOwnCodes\IJIDEAJAVA\cloud-alibaba-template\template-sms-mail-server/sms-mail-server-api/src/main/java" />
+                  <option name="javaServiceInterfacePackage" value="com.pcy.service" />
+                  <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/template-sms-mail-server/sms-mail-server-service/src/main/java" />
+                  <option name="javaServicePackage" value="com.pcy.service.impl" />
+                  <option name="javaServicePath" value="$PROJECT_DIR$/template-sms-mail-server/sms-mail-server-service/src/main/java" />
+                  <option name="xmlPackage" value="mappers" />
+                  <option name="xmlPath" value="$PROJECT_DIR$/template-sms-mail-server/sms-mail-server-service/src/main/resources" />
+                </UserPackageAndPathInfoByModule>
+              </value>
+            </entry>
             <entry key="template-authorization-server">
               <value>
                 <UserPackageAndPathInfoByModule>
@@ -71,6 +87,15 @@
         <option name="p3CComment" value="true" />
         <option name="tableGenerateConfigs">
           <map>
+            <entry key="movie_recommendation:mail_send_record">
+              <value>
+                <TableGenerateConfig>
+                  <option name="javaModelName" value="MailSendRecord" />
+                  <option name="moduleName" value="sms-mail-server-service" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
             <entry key="movie_recommendation:movie_detail">
               <value>
                 <TableGenerateConfig>
@@ -100,12 +125,21 @@
                 </TableGenerateConfig>
               </value>
             </entry>
+            <entry key="movie_recommendation:verification_code_send_record">
+              <value>
+                <TableGenerateConfig>
+                  <option name="javaModelName" value="VerificationCodeSendRecord" />
+                  <option name="moduleName" value="sms-mail-server-service" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
           </map>
         </option>
         <option name="useSwagger" value="true" />
         <option name="userMybatisPlus" value="true" />
         <option name="xmlMapperPackage" value="mappers" />
-        <option name="xmlMapperPath" value="$PROJECT_DIR$/template-general-user-server/general-user-server-service/src/main/resources" />
+        <option name="xmlMapperPath" value="$PROJECT_DIR$/template-sms-mail-server/sms-mail-server-service/src/main/resources" />
       </ProjectProfile>
     </option>
   </component>

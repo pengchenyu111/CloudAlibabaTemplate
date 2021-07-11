@@ -10,5 +10,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface MailSendRecordService extends IService<MailSendRecord> {
 
 
+    /**
+     * 根据事务id查询邮件记录
+     *
+     * @param txId 事务id
+     * @return
+     */
+    MailSendRecord queryMailSendRecordByTxId(String txId);
 }
 

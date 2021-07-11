@@ -14,12 +14,13 @@
         <result column="send_time" jdbcType="TIMESTAMP" property="sendTime"/>
         <result column="success_flag" jdbcType="CHAR" property="successFlag"/>
         <result column="request_id" jdbcType="VARCHAR" property="requestId"/>
+        <result column="transaction_id" jdbcType="VARCHAR" property="transactionId"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-
         <!--@mbg.generated-->
         id, account_name, to_address, subject, tag_name, mail_html_body, mail_text_body,
-        send_time, success_flag, request_id
+        send_time, success_flag, request_id, transaction_id
     </sql>
+
 </mapper>

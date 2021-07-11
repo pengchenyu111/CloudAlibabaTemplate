@@ -3,7 +3,7 @@ package com.pcy.controller;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.pcy.constant.ErrorCodeMsg;
 import com.pcy.model.ResponseObject;
-import com.pcy.service.SmsService;
+import com.pcy.mq.service.SmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

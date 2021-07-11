@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @author PengChenyu
- * @since 2021-07-10 15:42:46
+ * @since 2021-07-11 18:21:38
  */
 @Mapper
 public interface VerificationCodeSendRecordMapper extends BaseMapper<VerificationCodeSendRecord> {

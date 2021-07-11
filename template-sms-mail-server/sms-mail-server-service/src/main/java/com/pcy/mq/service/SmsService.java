@@ -1,4 +1,4 @@
-package com.pcy.service;
+package com.pcy.mq.service;
 
 import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;

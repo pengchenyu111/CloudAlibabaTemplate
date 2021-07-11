@@ -1,14 +1,21 @@
-package com.pcy.service;
+package com.pcy.mq.service;
 
+import cn.hutool.core.date.DateUtil;
+import com.aliyuncs.AcsResponse;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dm.model.v20151123.SingleSendMailRequest;
 import com.aliyuncs.dm.model.v20151123.SingleSendMailResponse;
+import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.pcy.constant.MailConstant;
+import com.pcy.domain.MailSendRecord;
 import com.pcy.model.mail.MailMessage;
+import com.pcy.service.MailSendRecordService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,10 +28,30 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MailService {
 
+    @Autowired
+    private MailSendRecordService mailSendRecordService;
+
     /**
      * 给单个用户发送邮件
+     *
+     * @param mailMessage 邮件内容
+     * @param txId        事务id
      */
-    public SingleSendMailResponse singleSendMailTo(MailMessage mailMessage) throws Exception {
+    @GlobalTransactional
+    public boolean singleSendMailTo(MailMessage mailMessage, String txId) throws Exception {
+        MailSendRecord record = singleSendMail(mailMessage, txId);
+        boolean isStore = storeMailRecord(record);
+        return record != null && isStore;
+    }
+
+    /**
+     * 阿里云发送单个邮件接口
+     *
+     * @param mailMessage
+     * @return
+     * @throws Exception
+     */
+    private MailSendRecord singleSendMail(MailMessage mailMessage, String txId) throws Exception {
         IAcsClient client = createClient(MailConstant.REGION, MailConstant.ACCESS_KEY_ID, MailConstant.ACCESS_KEY_SECRET);
         SingleSendMailRequest request = new SingleSendMailRequest();
         // 发信地址
@@ -45,12 +72,31 @@ public class MailService {
         request.setTextBody(mailMessage.getMailTextBody());
         // 调用阿里云接口发送邮件
         SingleSendMailResponse singleSendMailResponse = client.getAcsResponse(request);
-        log.info("发件人 => {}，收件人 => {}，请求id => {}，事件id => {}",
-                mailMessage.getAccountName(),
-                mailMessage.getToAddress(),
-                singleSendMailResponse.getRequestId(),
-                singleSendMailResponse.getEnvId());
-        return singleSendMailResponse;
+        log.info("发件人 => {}，收件人 => {}，请求id => {}", mailMessage.getAccountName(), mailMessage.getToAddress(), singleSendMailResponse.getRequestId());
+        // 装配返回对象
+        MailSendRecord record = MailSendRecord.builder()
+                .accountName(mailMessage.getAccountName())
+                .toAddress(mailMessage.getToAddress())
+                .subject(mailMessage.getSubject())
+                .tagName(mailMessage.getTagName())
+                .mailHtmlBody(mailMessage.getMailHTMLBody())
+                .mailTextBody(mailMessage.getMailTextBody())
+                .sendTime(DateUtil.parse(DateUtil.now()))
+                .successFlag(singleSendMailResponse.getEnvId() == null ? "0" : "1")
+                .requestId(singleSendMailResponse.getRequestId())
+                .transactionId(txId)
+                .build();
+        return record;
+    }
+
+    /**
+     * 将邮件发送结果存入数据库
+     *
+     * @param record
+     * @return
+     */
+    private boolean storeMailRecord(MailSendRecord record) {
+        return mailSendRecordService.save(record);
     }
 
 

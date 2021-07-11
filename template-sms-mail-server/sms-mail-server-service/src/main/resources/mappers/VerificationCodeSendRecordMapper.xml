@@ -10,11 +10,12 @@
         <result column="send_time" jdbcType="TIMESTAMP" property="sendTime"/>
         <result column="success_flag" jdbcType="CHAR" property="successFlag"/>
         <result column="request_id" jdbcType="VARCHAR" property="requestId"/>
+        <result column="transaction_id" jdbcType="VARCHAR" property="transactionId"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, phone_number, verification_code, send_time, success_flag, request_id
+        id, phone_number, verification_code, send_time, success_flag, request_id, transaction_id
     </sql>
 
 </mapper>

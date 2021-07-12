@@ -1,11 +1,16 @@
 package com.pcy.mq.service;
 
+import cn.hutool.core.date.DateUtil;
 import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyun.teaopenapi.models.Config;
 import com.pcy.constant.SmsConstant;
+import com.pcy.domain.VerificationCodeSendRecord;
+import com.pcy.service.VerificationCodeSendRecordService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,13 +23,18 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class SmsService {
 
+    @Autowired
+    private VerificationCodeSendRecordService verificationCodeSendRecordService;
+
     /**
      * 发送验证码短信到用户
      *
      * @param phoneNumber 用户手机号
      * @return
      */
-    public SendSmsResponse sendVerificationTo(String phoneNumber) throws Exception {
+    @GlobalTransactional
+    public boolean sendVerificationTo(String phoneNumber, String txId) throws Exception {
+        // 发送验证码短信
         Client client = createClient(SmsConstant.ACCESS_KEY_ID, SmsConstant.ACCESS_KEY_SECRET);
         String verificationCode = generateVerifyCode();
         SendSmsRequest sendSmsRequest = new SendSmsRequest()
@@ -33,8 +43,19 @@ public class SmsService {
                 .setTemplateCode(SmsConstant.TEMPLATE_CODE)
                 .setTemplateParam("{code:" + verificationCode + "}");
         SendSmsResponse sendSmsResponse = client.sendSms(sendSmsRequest);
-        log.info("目标用户 => {}，验证码 => {}，信息发送状态 => {}", phoneNumber, verificationCode, sendSmsResponse.getBody().getCode());
-        return sendSmsResponse;
+        boolean isSuccess = "OK".equals(sendSmsResponse.getBody().getCode());
+        log.info("目标用户 => {}，验证码 => {}，信息发送是否发送成功 => {}", phoneNumber, verificationCode, isSuccess);
+        // 数据库存入记录
+        VerificationCodeSendRecord record = VerificationCodeSendRecord.builder()
+                .phoneNumber(phoneNumber)
+                .verificationCode(verificationCode)
+                .sendTime(DateUtil.parse(DateUtil.now()))
+                .successFlag(isSuccess ? "1" : "0")
+                .requestId(sendSmsResponse.getBody().getRequestId())
+                .transactionId(txId)
+                .build();
+        boolean isStored = verificationCodeSendRecordService.save(record);
+        return isSuccess && isStored;
     }
 
     /**

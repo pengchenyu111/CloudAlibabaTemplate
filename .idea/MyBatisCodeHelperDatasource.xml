@@ -96,6 +96,15 @@
                 </TableGenerateConfig>
               </value>
             </entry>
+            <entry key="movie_recommendation:mail_template">
+              <value>
+                <TableGenerateConfig>
+                  <option name="javaModelName" value="MailTemplate" />
+                  <option name="moduleName" value="sms-mail-server-service" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
             <entry key="movie_recommendation:movie_detail">
               <value>
                 <TableGenerateConfig>

@@ -3,9 +3,11 @@ package com.pcy.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pcy.constant.ErrorCodeMsg;
 import com.pcy.constant.MQConstant;
+import com.pcy.domain.MailTemplate;
 import com.pcy.model.ResponseObject;
 import com.pcy.model.mail.MailMessage;
 import com.pcy.mq.service.MailService;
+import com.pcy.service.MailTemplateService;
 import org.apache.rocketmq.client.producer.TransactionSendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
@@ -33,12 +35,16 @@ public class MailController {
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
+    @Autowired
+    private MailTemplateService mailTemplateService;
+
     @PostMapping()
     public ResponseObject<TransactionSendResult> send(@RequestBody MailMessage mailMessage) throws Exception {
         System.out.println(mailMessage.toString());
         System.out.println("*************");
         // 下面这些代码应当放在某个服务的service里
         // 这里为了测试方面就直接写在controller里
+        mailMessage.setMailHTMLBody(mailTemplateService.getById(1).getTemplateBody());
         String txId = UUID.randomUUID().toString();
         ObjectMapper objectMapper = new ObjectMapper();
         String mailMessageStr = objectMapper.writeValueAsString(mailMessage);

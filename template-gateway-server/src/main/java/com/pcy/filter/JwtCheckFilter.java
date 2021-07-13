@@ -28,7 +28,7 @@ public class JwtCheckFilter implements GlobalFilter, Ordered {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-    @Value("${no.require.urls:/user/register,/user/login,/user/sms/sendTo}")
+    @Value("${no.require.urls:/user/register,/user/login}")
     private Set<String> noRequireTokenUris;
 
     @Override
@@ -42,6 +42,7 @@ public class JwtCheckFilter implements GlobalFilter, Ordered {
         String token = getUserToken(exchange);
         // 3 判断用户的token是否有效
         if (StringUtils.isEmpty(token)) {
+            System.out.println("1111111111111111111111111111");
             return buildeNoAuthorizationResult(exchange);
         }
         Boolean hasKey = redisTemplate.hasKey(token);
@@ -49,6 +50,8 @@ public class JwtCheckFilter implements GlobalFilter, Ordered {
             // token有效 ,直接放行
             return chain.filter(exchange);
         }
+        System.out.println("22222222222222222222222222");
+        System.out.println(token);
         return buildeNoAuthorizationResult(exchange);
     }
 

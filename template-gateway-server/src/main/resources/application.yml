@@ -23,6 +23,10 @@ spring:
           uri: lb://general-user-server-service
           predicates:
             - Path=/user/**
+        - id: sms-mail-server-service_router
+          uri: lb://sms-mail-server-service
+          predicates:
+            - Path=/sms_mail/**
 
     # Sentinel 限流与降级
     sentinel:

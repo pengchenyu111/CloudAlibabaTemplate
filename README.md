@@ -482,8 +482,23 @@ private MailSendRecord singleSendMail(MailMessage mailMessage, String txId) thro
     }
 ```
 
+# 五、项目运行说明
+
+第一、你得熟悉Spring Cloud的基础知识和Spring Cloud Alibaba 各个组件的使用！
+
+第二、你得配置好运行环境，包括OS和各个组件的相关配置！如果有必要，您可以联系我，获取虚拟机的镜像文件，免得您自己去配置这些繁琐的内容（可能只需要您配置下您的网络的网关）！
+
+第三、SQL文件已在上面给出，导入即可！
+
 # 结语
 
 开源万岁，拥抱开源！
 
 如果您觉得我的项目写的不错，请给我的github项目一颗小星星哦！
+
+**pengchenyu**
+
+邮箱：**iampengchenyu@163.com**
+
+GitHub：https://github.com/pengchenyu111
+
